@@ -1,21 +1,22 @@
 import {useEffect, useState} from "react"
 import './App.css'
 
-// require('dotenv').config(); ????
+const {REACT_APP_API_KEY, REACT_APP_API_ID} = process.env;
 
 function App() {
 
-  const exampleReq = `https://api.edamam.com/search?q=chicken&app_id=${process.env.APP_ID}&app_key=${process.env.APP_KEY}`;
+  const exampleReq = `https://api.edamam.com/search?q=chicken&app_id=${REACT_APP_API_ID}&app_key=${REACT_APP_API_KEY}`;
   const [counter, setCounter] = useState(0);
-
+  
   useEffect(() => {
     console.log("This part will execute everytime the page is re-renderd");
+    console.log(process.env);
     getRecipes();
-  }, []);
+  }, [])
 
   const getRecipes = async () => {
     const response = await fetch(exampleReq);  
-    const data = await response.json;
+    const data = await response.json();
     console.log(data);
   }
 
