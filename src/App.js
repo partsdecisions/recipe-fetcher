@@ -17,7 +17,7 @@ function App() {
   const getRecipes = async () => {
     const response = await fetch(exampleReq);  
     const data = await response.json();
-    console.log(data);
+    console.log(data.hits);
   }
 
   return (
